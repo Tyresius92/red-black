@@ -15,9 +15,6 @@ INCLUDES = $(shell echo src/*.h)
 
 LDLIBS = -lrt
 
-%.o: src/%.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
-
 all: tests.out
 
 tests.out: test/test_rb_tree.c src/rb_tree.c src/rb_tree.h
@@ -28,6 +25,8 @@ memcheck: tests.out
 	@valgrind $(VFLAGS) ./tests.out
 	@echo "Memory check passed"
 
+%.o: src/%.c $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf *.o *.out *.out.dSYM *~
