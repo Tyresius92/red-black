@@ -324,13 +324,6 @@ void rb_private_postorder_map(Node *root,
                               void func_to_apply(void *value, int depth, void *cl), 
                               void *cl);
 
-
-
-
-/*****************************
- * PRIVATE WRAPPED FUNCTIONS *
- *****************************/ 
-
 /************************
  * FUNCTION DEFINITIONS *
  ************************/ 
@@ -476,6 +469,7 @@ Node *private_rb_insert_value(Node *root, Node *new_node,
         return root; 
 }
 
+//TODO: Refactor this, breaking it into smaller pieces
 void fix_insertion_violation(T tree, Node *culprit)
 {
         Node *parent_node = NULL; 
@@ -636,6 +630,7 @@ void rb_transplant(T tree, Node *u, Node *v)
                 v->parent = u->parent; 
 }
 
+//TODO: Refactor this, breaking it into smaller pieces. 
 void rb_delete_fixup(T tree, Node *culprit)
 {
         if (culprit == NULL)
